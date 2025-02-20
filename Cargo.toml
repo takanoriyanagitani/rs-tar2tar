@@ -1,0 +1,24 @@
+[package]
+name = "rs-tar2tar"
+version = "0.1.0"
+edition = "2021"
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+unwrap_used = "forbid"
+
+[profile.release-wasi]
+inherits = "release"
+lto = true
+strip = true
+opt-level = 2
+codegen-units = 16
+
+[dependencies.tar]
+version = "0.4.43"
+default-features = false
+features = [
+	"xattr",
+]
